@@ -1,24 +1,11 @@
-import {
-  Space,
-  Tooltip,
-  Badge,
-  Avatar,
-  Drawer,
-  List,
-  Layout,
-  Button,
-} from "antd";
-
+import { Space, Tooltip, Badge, Avatar, Drawer, List, Layout } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
 import Categories from "./mockdata";
 import { Header } from "antd/es/layout/layout";
-
 import { BellFilled } from "@ant-design/icons";
 
 const Category = () => {
-  const [notificationsOpen, setNotificationsOpen] = useState(false);
-  const [orders, setOrders] = useState([]);
   const [data, setData] = useState(Categories);
   const filterItem = (item) => {
     const result = Categories.filter((curData) => {
@@ -26,39 +13,39 @@ const Category = () => {
     });
     setData(result);
   };
+
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
+  const [orders, setOrders] = useState([]);
   useEffect(() => {
-    setOrders("AI", "VR", "Animations");
+    setOrders("Tv", "Fridge");
   }, []);
+
   return (
     <Layout>
-      <Layout>
-        <Header>
-          <Space style={{ marginLeft: "90%" }}>
-            <Tooltip placement="topLeft" title="Country">
-              <Avatar src="../flag.png"></Avatar>
-            </Tooltip>
-            <p style={{ marginBottom: "2%", fontSize: 15, color: "white" }}>
-              EN
-            </p>
+      <Header>
+        <Space style={{ marginLeft: "90%" }}>
+          <Tooltip placement="topLeft" title="Country">
+            <Avatar src="../flag.png"></Avatar>
+          </Tooltip>
+          <p style={{ marginBottom: "2%", fontSize: 15, color: "white" }}>EN</p>
 
-            <Tooltip placement="topLeft" title="Notification">
-              <Badge count={2}>
-                <BellFilled
-                  style={{ fontSize: 30, color: "orange" }}
-                  onClick={() => {
-                    setNotificationsOpen(true);
-                  }}
-                />
-              </Badge>
-            </Tooltip>
-            <br></br>
-            <Tooltip placement="topLeft" title="Logout">
-              <Avatar src="../human.png"></Avatar>
-            </Tooltip>
-          </Space>
-        </Header>
-        <h1>Let's shop</h1>
-      </Layout>
+          <Tooltip placement="topLeft" title="Notification">
+            <Badge count={2}>
+              <BellFilled
+                style={{ fontSize: 30, color: "orange" }}
+                onClick={() => {
+                  setNotificationsOpen(true);
+                }}
+              />
+            </Badge>
+          </Tooltip>
+          <br></br>
+          <Tooltip placement="topLeft" title="Logout">
+            <Avatar src="../human.png"></Avatar>
+          </Tooltip>
+        </Space>
+      </Header>
+      <h1>Let's shop</h1>
 
       <div className="container-fluid mx-2">
         <div className="row mt-5 mx-2">
@@ -138,7 +125,7 @@ const Category = () => {
       >
         <List
           dataSource={orders}
-          renderItem={(item) => {
+          renderItem={() => {
             return <List.Item>Item ordered!</List.Item>;
           }}
         ></List>
