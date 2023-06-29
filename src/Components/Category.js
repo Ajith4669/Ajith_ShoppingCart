@@ -94,7 +94,7 @@ const Category = () => {
                 const { id, title, price, image, Descripition, Proccessor } =
                   values;
                 return (
-                  <>
+                  <div>
                     <div className="col-md-4" key={id}>
                       <div className="card">
                         <img src={image} className="card-img-top" />
@@ -108,7 +108,7 @@ const Category = () => {
                         </div>
                       </div>
                     </div>
-                  </>
+                  </div>
                 );
               })}
             </div>
